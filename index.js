@@ -59,12 +59,11 @@ const prevSong = () => {
   
 }
 const setProgress = (e) => {
-  const width = this.clientWidth
+  const width = progress.clientWidth
   const position = e.offsetX
   const duration = audio.duration
 
-  audio.currentTime = (position/width) * duration
-  console.log(position)
+ audio.currentTime = (position/width) * duration
 }
 
 play.addEventListener('click', () => {
@@ -80,8 +79,9 @@ audio.addEventListener('timeupdate', (e) => {
   updateProgress(e)
 })
 
-audio.addEventListener('ended', nextSong)
+
 next.addEventListener('click', nextSong)
 prev.addEventListener('click', prevSong)
+audio.addEventListener('ended', nextSong)
 
 progress.addEventListener('click', setProgress)
