@@ -43,17 +43,28 @@ const updateProgress= (e) => {
 const nextSong = () => {
   index++
   if(index > songs.length-1){
-    return index = 0
+     index = 0
   }
-    playSong(songs[index], imgs[index])
-    console.log(index)
+    loadSong(songs[index], imgs[index])
+   audio.play()
+  
 }
 const prevSong = () => {
   index--
   if(index < 0){
-    return index = songs.length -1
+    index = songs.length -1
   }
-  playSong(songs[index], imgs[index])
+  loadSong(songs[index], imgs[index])
+  audio.play()
+  
+}
+const setProgress = (e) => {
+  const width = this.clientWidth
+  const position = e.offsetX
+  const duration = audio.duration
+
+  audio.currentTime = (position/width) * duration
+  console.log(position)
 }
 
 play.addEventListener('click', () => {
@@ -69,3 +80,8 @@ audio.addEventListener('timeupdate', (e) => {
   updateProgress(e)
 })
 
+audio.addEventListener('ended', nextSong)
+next.addEventListener('click', nextSong)
+prev.addEventListener('click', prevSong)
+
+progress.addEventListener('click', setProgress)
