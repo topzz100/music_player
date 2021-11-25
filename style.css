@@ -21,6 +21,8 @@ section {
   align-items: center;
   background-color: white;
   padding: 10px;
+  opacity: 1;
+  z-index: 1000;
   /* width: 400px; */
 }
 .info {
@@ -40,7 +42,7 @@ section {
   padding: 10px 10px 20px 100px;
   flex-direction: column;
 }
-.container.play .info {
+.container.start .info {
   opacity: 0.5;
   transform: translateY(-100%);
 }
@@ -73,7 +75,7 @@ img {
   animation: rotate 3s linear infinite;
   animation-play-state: paused;
 }
-.container.play img {
+.container.start img {
   animation-play-state: running;
 }
 .btn {
